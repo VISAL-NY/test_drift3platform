@@ -1,3 +1,4 @@
+import 'package:drift/drift.dart' as dr;
 import 'package:flutter/material.dart';
 import 'package:test_drift/database.dart';
 import 'package:test_drift/shared.dart' as imp;
@@ -25,17 +26,27 @@ class _MyAppState extends State<MyApp> {
 
   @override
   void initState() { 
-    super.initState();
+    super.initState();  
   }
 
   Future<List<String>> getdata() async{
     final result= await widget.database.select(widget.database.employee).get();
     result.forEach((element) {myNameList.add(element.name);});
     return myNameList;
-    
   }
 
-  @override
+
+
+    Future<List<String>> limitemployee(int limit)async {
+      final result= await (widget.database.select(widget.database.employee)..orderBy([(t)=>dr.OrderingTerm(expression: t.id,mode: dr.OrderingMode.desc)])..limit(limit)).get();
+      result.forEach((element) {myNameList.add(element.name);});
+      return myNameList;
+    }
+
+
+
+
+    @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
@@ -73,7 +84,7 @@ class _MyAppState extends State<MyApp> {
                 child: Container(
                   child: FutureBuilder
                   (
-                    future: getdata(),
+                    future: limitemployee(5),
                     builder:(context,snapshot){
                       if(snapshot.hasData){
                         return ListView.builder(
