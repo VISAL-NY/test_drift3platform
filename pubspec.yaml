@@ -53,6 +53,7 @@ dev_dependencies:
   path: ^1.8.2
   http: ^0.13.5
   provider: ^6.0.5
+  sqlite3_flutter_libs: ^0.5.13
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
