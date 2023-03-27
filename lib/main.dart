@@ -62,6 +62,7 @@ class _MyAppState extends State<MyApp> {
                       child: TextField(
                         controller: _controller,
                         decoration: const InputDecoration(
+                          hintText: 'Enter name',
                           border: OutlineInputBorder(
 
                           )
