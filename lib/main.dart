@@ -76,7 +76,7 @@ class _MyAppState extends State<MyApp> {
                         myNameList.clear();
                       
                       });
-                    }, child: const Text('Add Item')),
+                    }, child: const Text('Add New Item')),
                   ],
                 )
             ),
